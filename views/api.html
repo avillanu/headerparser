@@ -1,0 +1,20 @@
+<head>
+<TITLE>HELLO WORLD</TITLE>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+</head>
+<div id="hello"></div>
+<script>
+$.getJSON('https://ipapi.co/json/', function(data) {
+  let form = document.createElement('form');
+form.action = 'https://muddy-fine.glitch.me/api/whoami'
+form.method = 'POST';
+//form.innerHTML = '<INPUT name="asdf" value ="a" /> <input name="asdf2" value="b" />'
+form.innerHTML = '<input name="ipaddress"  value ="' + data["ip"] + '"/><input name="language" value ="' + data["languages"] + '"/><input name="software" value ="' + navigator.userAgent + '"/>';
+
+// the form must be in the document to submit it
+document.body.append(form);
+
+form.submit();
+
+});
+</script>
